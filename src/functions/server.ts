@@ -1,7 +1,7 @@
 // Add reusable functions to use when this app acts as a server
 import { Probot } from "probot";
-import { BountyReleasedDetail, EscrowSetDetail } from "../types.js";
-import { LABELS, LINKS, MESSAGES } from "../constants.js";
+import { BountyReleasedDetail, EscrowSetDetail } from "../types";
+import { LABELS, LINKS, MESSAGES } from "../constants";
 
 /**
  * Escrow Success (After a Successfull POST request from the client)

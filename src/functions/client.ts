@@ -1,7 +1,7 @@
 // Add reusable functions to use when this app acts as a client
 import { Context } from "probot";
-import { ENDPOINTS, MESSAGES, PATTERNS } from "../constants.js";
-import { BountySetRequestBody, InstallationRepositoriesRequestBody, ReleaseBountyPayload, RemoveRepositoriesRequestBody, Repository } from "../types.js";
+import { ENDPOINTS, MESSAGES, PATTERNS } from "../constants";
+import { BountySetRequestBody, InstallationRepositoriesRequestBody, ReleaseBountyPayload, RemoveRepositoriesRequestBody, Repository } from "../types";
 
 // Function to extract the bounty amount from a comment
 const getBounty = (comment: string): number => {
