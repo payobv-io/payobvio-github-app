@@ -20,6 +20,7 @@ export default async function (request: VercelRequest, response: VercelResponse)
   middleware(request, response);
 
   const requestBody = request.body as EscrowSetRequestBody;
+  console.log(`Escrow Request Body: ${JSON.stringify(requestBody)}`);
 
   const { error, message } = requestBody.action === "approved"
       ? await escrowSetApproved(probot, requestBody.detail)
