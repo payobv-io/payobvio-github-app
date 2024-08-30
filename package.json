@@ -13,7 +13,8 @@
   "repository": "github:probot/example-vercel",
   "dependencies": {
     "express": "^4.19.2",
-    "probot": "^13.0.0"
+    "probot": "^13.0.0",
+    "vercel": "^37.2.1"
   },
   "devDependencies": {
     "@octokit/webhooks": "^13.1.0",

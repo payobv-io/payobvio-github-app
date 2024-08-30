@@ -1,13 +1,15 @@
 import { Probot, Context, ApplicationFunctionOptions } from "probot";
-import { addRepositoriesInstallation, handleBountySet, handlePullRequestMerge, handlePullRequestOpen, isIncludesBounty, removeRepositoriesInstallation } from "./functions/client.js";
-import { bountyReleased, escrowSetApproved, escrowSetRejected } from "./functions/server.js";
+import { addRepositoriesInstallation, handleBountySet, handlePullRequestMerge, handlePullRequestOpen, isIncludesBounty, removeRepositoriesInstallation } from "./functions/client";
+import { bountyReleased, escrowSetApproved, escrowSetRejected } from "./functions/server";
 import * as express from "express";
-import { BountyReleasedDetail, EscrowSetRequestBody } from "./types.js";
+import { BountyReleasedDetail, EscrowSetRequestBody } from "./types";
 
 export default (app: Probot, {
   getRouter
 }: ApplicationFunctionOptions) => {
   app.log.info(`App loaded, ${getRouter ? "with router" : "without router"}`);
+
+  
 
   // Express Routes
   if(getRouter){
@@ -30,10 +32,10 @@ export default (app: Probot, {
       ? await escrowSetApproved(app, requestBody.detail)
       : await escrowSetRejected(app, requestBody.detail);
 
-        if(error){
-          return response.status(400).json({ error });
-        } 
-        return response.status(200).json({ message });
+      if(error){
+        return response.status(400).json({ error });
+      } 
+      return response.status(200).json({ message });
     });
 
     // Escrow Released
