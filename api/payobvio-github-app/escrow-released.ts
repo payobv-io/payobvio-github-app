@@ -3,14 +3,9 @@ import app from "../../src/app";
 import { BountyReleasedDetail, EscrowSetRequestBody } from "../../src/types";
 import { bountyReleased, escrowSetApproved, escrowSetRejected } from "../../src/functions/server";
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import getRawBody from "raw-body";
 
 const probot = createProbot();
-
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
 
 // Escrow Released
 export default async function (request: VercelRequest, response: VercelResponse) {
@@ -25,7 +20,10 @@ export default async function (request: VercelRequest, response: VercelResponse)
 
   middleware(request, response);
 
-  const requestBody = request.body as BountyReleasedDetail;
+  const requestBodyBuffer = await getRawBody(request);
+  const parsedRequestBody = JSON.parse(requestBodyBuffer.toString());
+
+  const requestBody = parsedRequestBody as BountyReleasedDetail;
 
   const { error, message } = await bountyReleased(probot, requestBody);
 

@@ -7,13 +7,6 @@ import getRawBody from "raw-body";
 
 const probot = createProbot();
 
-
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
-
 // Escrow handling depending on the action (approved/rejected)
 export default async function (request: VercelRequest, response: VercelResponse) {
 
