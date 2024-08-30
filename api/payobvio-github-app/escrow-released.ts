@@ -28,3 +28,9 @@ export default async function (request: VercelRequest, response: VercelResponse)
   }
   return response.status(200).json({ message });
 }
+
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
