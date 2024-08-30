@@ -7,7 +7,7 @@ import { BountyReleasedDetail, EscrowSetRequestBody } from "./types.js";
 export default (app: Probot, {
   getRouter
 }: ApplicationFunctionOptions) => {
-  app.log.info("App was loaded");
+  app.log.info(`App loaded, ${getRouter ? "with router" : "without router"}`);
 
   // Express Routes
   if(getRouter){
