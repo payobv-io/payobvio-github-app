@@ -31,6 +31,6 @@ export const LINKS = {
 
 export const LABELS = {
   ESCROWED: (bounty: number) => `${bounty} SOL Escrowed`,
-  RELEASED: (bounty: number) => `${bounty} SOL Rewareded`,
+  RELEASED: (bounty: number) => `${bounty} SOL Rewarded`,
   AWAITING_BOUNTY_RELEASE: "Awaiting Bounty Release",
 }
