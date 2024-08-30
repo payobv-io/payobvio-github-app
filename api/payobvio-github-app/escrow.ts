@@ -6,6 +6,13 @@ import { VercelRequest, VercelResponse } from "@vercel/node";
 
 const probot = createProbot();
 
+
+export const config = {
+  api: {
+    bodyParser: true,
+  },
+};
+
 // Escrow handling depending on the action (approved/rejected)
 export default async function (request: VercelRequest, response: VercelResponse) {
 
@@ -31,9 +38,3 @@ export default async function (request: VercelRequest, response: VercelResponse)
   } 
   return response.status(200).json({ message });
 }
-
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
