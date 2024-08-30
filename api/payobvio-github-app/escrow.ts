@@ -3,6 +3,7 @@ import app from "../../src/app";
 import { EscrowSetRequestBody } from "../../src/types";
 import { escrowSetApproved, escrowSetRejected } from "../../src/functions/server";
 import { VercelRequest, VercelResponse } from "@vercel/node";
+import getRawBody from "raw-body";
 
 const probot = createProbot();
 
@@ -26,7 +27,10 @@ export default async function (request: VercelRequest, response: VercelResponse)
 
   middleware(request, response);
 
-  const requestBody = request.body as EscrowSetRequestBody;
+  const requestBodyBuffer = await getRawBody(request);
+  const parsedRequestBody = JSON.parse(requestBodyBuffer.toString());
+
+  const requestBody = parsedRequestBody as EscrowSetRequestBody;
   console.log(`Escrow Request Body: ${JSON.stringify(requestBody)}`);
 
   const { error, message } = requestBody.action === "approved"
