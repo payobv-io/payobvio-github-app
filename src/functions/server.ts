@@ -32,16 +32,10 @@ export const escrowSetApproved = async (app: Probot, requestBody: EscrowSetDetai
       repo,
       issue_number
     }
-  
-    /**
-     * issue_number: 16
-      owner: "ASHWIN776"
-      repo: "test-my-repo"
-      body: "Bounty set to 100 SOL, awaiting escrow."
-      */
+
     await octokit.rest.issues.createComment({
       ...payload,
-      body: `Bounty of $${bounty} has been escrowed`
+      body: MESSAGES.BOUNTY_ESCROWED(bounty)
     });
 
     // Update Issue ----------------
